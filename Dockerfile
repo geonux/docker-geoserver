@@ -1,4 +1,4 @@
-# GeoServer 2.8.1
+# GeoServer 2.8.2
 # Oracle JRE 1.7
 # JAI 1.1.3
 # ImageIO 1.1
@@ -92,8 +92,9 @@ ENV CATALINA_OPTS -Xmx1024m -Xms48m -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:MaxPer
 # Install geoserver 
 # ---------------------------------------------------------------------------------
 
-RUN curl http://netix.dl.sourceforge.net/project/geoserver/GeoServer/2.8.1/geoserver-2.8.1-war.zip > /tmp/geoserver.zip; \
-    jar xvf /tmp/geoserver.zip geoserver.war && mv -v geoserver.war $CATALINA_HOME/webapps/geoserver.war
+WORKDIR $CATALINA_HOME/webapps/geoserver
+RUN curl http://netix.dl.sourceforge.net/project/geoserver/GeoServer/2.8.2/geoserver-2.8.2-war.zip > /tmp/geoserver.zip; \
+    jar xvf /tmp/geoserver.zip geoserver.war && jar xvf geoserver.war && rm geoserver.war
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
