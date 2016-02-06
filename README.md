@@ -5,7 +5,7 @@ A simple Geoserver image
 Description
 -----------
 
-A standard Geoserver 2.8.1 with Oracle Java 7, unlimited strength crypto and JAI.
+A standard Geoserver 2.8.x with Oracle Java 7, unlimited strength crypto and JAI.
 
 Geoserver run on container port 8080.
 
