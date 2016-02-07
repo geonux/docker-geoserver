@@ -96,5 +96,12 @@ WORKDIR $CATALINA_HOME/webapps/geoserver
 RUN curl http://netix.dl.sourceforge.net/project/geoserver/GeoServer/2.8.2/geoserver-2.8.2-war.zip > /tmp/geoserver.zip; \
     jar xvf /tmp/geoserver.zip geoserver.war && jar xvf geoserver.war && rm geoserver.war
 
+# ---------------------------------------
+# Change user
+# --------------------------------------
+
+RUN useradd -M -r geoserver && chown -R geoserver:geoserver $CATALINA_HOME
+USER geoserver
+
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
